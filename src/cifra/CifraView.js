@@ -36,7 +36,7 @@ export default class CifraView extends PiComponent {
 
     _titulo = '';
     _mostrarAcordes = true;
-    _rolagemAutomatica = false;
+    _rolagemAutomatica = true;
     _evidenciarAcordes = true;
 
     viewDidLoad() {
