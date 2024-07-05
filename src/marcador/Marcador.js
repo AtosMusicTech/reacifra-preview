@@ -50,10 +50,10 @@ export default class Marcador {
         }
 
         const rect = this.$marcador.get(0).getBoundingClientRect();
-        if ((rect.bottom + 30) > window.innerHeight) {
+        if ((rect.bottom + 60) > window.innerHeight) {
             window.scrollBy(0, rect.bottom - window.innerHeight + 100);
         } else if (rect.top < 0) {
-            window.scrollBy(0, (rect.top - 30));
+            window.scrollBy(0, (rect.top - 60));
         }
     }
 };
