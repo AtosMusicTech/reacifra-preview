@@ -53,7 +53,6 @@ export default class CifraStream {
         // Quando uma mensagem é recebida do servidor
         socket.addEventListener('message', event => {
             this._processEvent(event);
-            console.log('Recebido do servidor:', event);
         });
 
         // Quando a conexão é fechada
