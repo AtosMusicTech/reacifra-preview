@@ -59,6 +59,7 @@ export default class CifraStream {
         // Quando a conexão é fechada
         socket.addEventListener('close', event => {
             console.log('Desconectado do servidor WebSocket');
+            this.connect();
         });
     }
 };

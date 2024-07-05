@@ -10,6 +10,9 @@ export default class NotesCollection extends Array {
     }
 
     getNoteByPosition(p) {
-        return this[p + 1];
+        if (p < 0) return 0;
+        if (p >= this.length) return this.length - 1;
+
+        return this[p];
     }
 };

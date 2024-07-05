@@ -32,7 +32,7 @@ export default class CifraView extends PiComponent {
         this._loadNotes();
         this._loadMarcador();
 
-        this.setMarcadorPosicao(1);
+        this.setMarcadorPosicao(0);
         if (fn) fn();
     }
 
