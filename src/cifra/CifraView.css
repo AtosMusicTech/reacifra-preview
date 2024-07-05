@@ -6,10 +6,18 @@
     z-index: -1;
     border-radius: 4px;
     transition: top 0.2s, left 0.2s, width 0.2s, height 0.2s;
+    display: none;
 }
 
 .cifra-view b {
     color: #f70;
+}
+
+.cifra-view i {
+    background-color: #fffb39;
+    color: #555;
+    border: 1px solid #333;
+    font-style: normal;
 }
 
 .cifra-view .titulo {

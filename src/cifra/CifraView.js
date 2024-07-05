@@ -23,9 +23,7 @@ export default class CifraView extends PiComponent {
     }
 
     setCifra(cifra, fn) {
-        this.$element.find("#content").html(cifra.texto.replace(/\([^)]+\)/gi, (note) => {
-            return `<b>${note}</b>`
-        }));
+        this.$element.find("#content").html(this._formatNotes(this._formatTag(cifra.texto)));
 
         this._titulo = cifra.titulo;
 
@@ -38,6 +36,18 @@ export default class CifraView extends PiComponent {
 
     setMarcadorPosicao(position) {
         this.marcador.move(this.notes.getNoteByPosition(position));
+    }
+
+    _formatNotes(cifra) {
+        return cifra.replace(/\([^)]+\)/gi, (note) => {
+            return `<b>${note}</b>`
+        });
+    }
+
+    _formatTag(cifra) {
+        return cifra.replace(/\[[^\]]+\]/gi, (note) => {
+            return `<i>${note}</i>`
+        });
     }
 
     _loadMarcador() {
