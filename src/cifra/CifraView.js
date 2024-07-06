@@ -34,6 +34,8 @@ export default class CifraView extends PiComponent {
         <div id="marcador" class="marcador"></div>
         
         <pre id="content"></pre>
+
+        <div style="padding: 1px 10px; border-radius: 3px; position: fixed; background-color: rgba(0, 0, 0, 0.05); bottom: 0px; right: 3px;">v0.1.1</div>
     </div>`;
 
     _titulo = '';
