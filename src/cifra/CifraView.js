@@ -45,6 +45,7 @@ export default class CifraView extends PiComponent {
 
     viewDidLoad() {
         this._loadConfig();
+        this._loadMarcador();
     }
 
     setStream(stream) {
@@ -64,7 +65,6 @@ export default class CifraView extends PiComponent {
         this._titulo = cifra.titulo;
 
         this._loadNotes();
-        this._loadMarcador();
         this._loadConfig();
 
         this.setMarcadorPosicao(0);
