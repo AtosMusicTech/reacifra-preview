@@ -9,7 +9,11 @@
     display: none;
 }
 
-.cifra-view .center{
+.cifra-view pre {
+    padding-left: 15px;
+}
+
+.cifra-view .center {
     position: fixed;
     top: 50%;
     left: 0px;
