@@ -99,7 +99,7 @@ export default class CifraView extends PiComponent {
 
     _formatNotes(cifra) {
         return cifra.replace(/\([^)]+\)/gi, (note) => {
-            return `<b>${note}</b>`
+            return `<b>${note.replace('(', '').replace(')', '')}</b>`
         });
     }
 
