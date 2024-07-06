@@ -29,6 +29,8 @@ export default class CifraView extends PiComponent {
             </div>
         </div>
 
+        <div class="center"></div>
+
         <div id="marcador" class="marcador"></div>
         
         <pre id="content"></pre>

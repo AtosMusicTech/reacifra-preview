@@ -28,7 +28,7 @@ export default class Marcador {
         this.note = note;
 
         setTimeout(() => {
-            this._moveScroll();
+            this._moveScroll(note);
         }, 200);
     }
 
@@ -44,15 +44,22 @@ export default class Marcador {
         this.$marcador.hide();
     }
 
-    _moveScroll() {
+    _moveScroll(note) {
         if (!this.rolagemAutomatica) {
             return;
         }
 
+        const wh = window.innerHeight;
+        const wh2 = wh / 2;
+        const np = note.position().top;
+        const nt = np - window.scrollY;
+
+        if (nt > wh2) {
+            window.scrollBy(0, note.height() / 2 + nt - wh2);
+        }
+
         const rect = this.$marcador.get(0).getBoundingClientRect();
-        if ((rect.bottom + 60) > window.innerHeight) {
-            window.scrollBy(0, rect.bottom - window.innerHeight + 100);
-        } else if (rect.top < 0) {
+        if (rect.top < 0) {
             window.scrollBy(0, (rect.top - 60));
         }
     }
