@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
 	entry: './src/bootstrap.js',
 	mode: 'development',
-    devtool: 'inline-source-map',
+	devtool: 'inline-source-map',
 	output: {
 		filename: 'app.js?v=[contenthash]',
 		path: path.resolve(__dirname) + '/dist/',
@@ -19,6 +19,16 @@ module.exports = {
 	],
 	module: {
 		rules: [
+			{
+				test: /\.js$/,
+				exclude: /node_modules/,
+				use: {
+					loader: 'babel-loader',
+					options: {
+						presets: ['@babel/preset-env']
+					}
+				}
+			},
 			{
 				test: /\.html$/i,
 				loader: 'html-loader',
