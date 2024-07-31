@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	entry: './src/bootstrap.js',
-	mode: 'development',
+	mode: 'production',
 	devtool: 'inline-source-map',
 	output: {
 		filename: 'app.js?v=[contenthash]',
