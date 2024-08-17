@@ -43,6 +43,11 @@ export default class HomePage extends PiComponent {
                 return;
             }
 
+            if (transporte.cifraId == -1) {
+                this.setView(new CifraAnime());
+                return;
+            }
+
             const cifraView = new CifraView();
             this.setView(cifraView);
             cifraView.setStream(this.cifraStream);
