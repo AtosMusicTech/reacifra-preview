@@ -43,7 +43,7 @@ export default class HomePage extends PiComponent {
                 return;
             }
 
-            if (transporte.cifraId == -1) {
+            if (transporte.cifraId == 100) {
                 this.setView(new CifraAnime());
                 return;
             }
