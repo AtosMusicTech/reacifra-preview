@@ -49,9 +49,9 @@ export default class CifraView extends PiComponent {
     }
 
     setStream(stream) {
-        stream.onNewNote(note => {
-            this.setMarcadorPosicao(note.position);
-        });
+        // stream.onNewNote(note => {
+        //     this.setMarcadorPosicao(note.position);
+        // });
     }
 
     async loadCifra(id, fn) {
@@ -64,10 +64,12 @@ export default class CifraView extends PiComponent {
 
         this._titulo = cifra.titulo;
 
+        document.title = `${this._titulo} - CifraAtos`;
+
         this._loadNotes();
         this._loadConfig();
 
-        this.setMarcadorPosicao(0);
+        this.setMarcadorPosicao(1);
         if (fn) fn();
     }
 

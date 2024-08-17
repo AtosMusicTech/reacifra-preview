@@ -6,6 +6,7 @@ import HomePage from "./homepage/HomePage";
 import CifraView from "./cifra/CifraView";
 
 import "./app.css"
+import CifraAnime from "./cifra/CifraAnime";
 
 if (window.appSettings) {
     PiConfig.load(appSettings);
@@ -87,6 +88,17 @@ new Bootstrap()
     .onReady((boot) => {
         const homepage = new HomePage();
         homepage.render(global.app.$element);
-        homepage.setView(new CifraView());
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id');
+
+        if (id == null) {
+            homepage.setView(new CifraAnime());
+            return;
+        }
+
+        const view = new CifraView();
+        homepage.setView(view);
+        view.loadCifra(id);
     })
     .load();

@@ -23,7 +23,7 @@ export default class HomePage extends PiComponent {
     viewDidLoad() {
         this.cifraStream.connect();
 
-        this._loadTransporte();
+        // this._loadTransporte();
         this._loadEvents();
     }
 
