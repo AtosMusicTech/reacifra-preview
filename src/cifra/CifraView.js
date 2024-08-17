@@ -64,8 +64,7 @@ export default class CifraView extends PiComponent {
 
         this._titulo = cifra.titulo;
 
-        document.title = `${this._titulo} - CifraAtos`;
-
+        this._setTitle(cifra.titulo);
         this._loadNotes();
         this._loadConfig();
 
@@ -154,6 +153,29 @@ export default class CifraView extends PiComponent {
             mostrarAcordes: mostrarAcordes === 'true',
             rolagemAutomatica: rolagemAutomatica === 'true',
             evidenciarAcordes: evidenciarAcordes === 'true'
+        }
+    }
+
+    /**
+     * 
+     */
+    _setTitle(titulo) {
+        const title = `${titulo} - ReaCifra`;
+        document.title = title
+        this._setMetaTag('og:title', title);
+    }
+
+    _setMetaTag(property, content) {
+        let metaTag = document.querySelector(`meta[property='${property}']`);
+
+        if (metaTag) {
+            metaTag.setAttribute("content", content);
+        } else {
+            // Se a metatag não existir, cria uma nova
+            metaTag = document.createElement('meta');
+            metaTag.setAttribute("property", property);
+            metaTag.setAttribute("content", content);
+            document.head.appendChild(metaTag);
         }
     }
 }
