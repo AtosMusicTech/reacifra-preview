@@ -12,6 +12,10 @@ export default class CifraModel extends PiModel {
         return this;
     }
 
+    isEqual(cifra){
+        return this.id == cifra.id;
+    }
+
     actions(){
         return {
             'insert': 'POST:/',

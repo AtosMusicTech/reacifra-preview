@@ -5,11 +5,13 @@ import Marcador from '../marcador/Marcador';
 import NotesCollection from '../note/NoteCollection';
 
 import "./CifraView.css";
+import QueueModel from '../queue/QueueModel';
 
 export default class CifraView extends PiComponent {
     view = /*html*/`<div :class="cifra-view {@_mostrarAcordes ?  '' : 'no-chords'}">
         <div class="titulo">
             {@_titulo}
+            <i @click="next()" class="queue-next fa-solid fa-arrow-right"></i>
         </div>
 
         <div class="options">
@@ -42,10 +44,12 @@ export default class CifraView extends PiComponent {
     _mostrarAcordes = true;
     _rolagemAutomatica = true;
     _evidenciarAcordes = true;
+    _currentCifraIndex = 0;
 
     viewDidLoad() {
         this._loadConfig();
         this._loadMarcador();
+        this._loadQueue();
     }
 
     setStream(stream) {
@@ -61,18 +65,40 @@ export default class CifraView extends PiComponent {
 
     setCifra(cifra, fn) {
         this.$element.find("#content").html(this._formatNotes(this._formatTag(cifra.texto)));
+        this.cifra = cifra;
 
         this._titulo = cifra.titulo;
 
         this._loadNotes();
         this._loadConfig();
 
-        this.setMarcadorPosicao(0);
+        this.setMarcadorPosicao(1);
         if (fn) fn();
     }
 
     setMarcadorPosicao(position) {
         this.marcador.move(this.notes.getNoteByPosition(position));
+    }
+
+    next() {
+        if (this.queue == null) {
+            return;
+        }
+
+        if (this.queue.cifras.length > 0) {
+            const cifra = this.queue.cifras[this._currentCifraIndex++ % this.queue.cifras.length];
+            if (this.cifra.isEqual(cifra)) {
+                this.next();
+                return;
+            }
+
+            this.loadCifra(cifra.id);
+        }
+    }
+
+    async _loadQueue() {
+        const queue = await (new QueueModel()).get();
+        this.queue = queue;
     }
 
     _saveMostrarAcordes(v) {

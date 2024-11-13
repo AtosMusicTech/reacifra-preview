@@ -9,6 +9,14 @@
     display: none;
 }
 
+.cifra-view .queue-next{
+    font-size: 19px;
+    float: right;
+    margin-right: 15px;
+    padding: 2px 5px;
+    cursor: pointer;
+}
+
 .cifra-view pre {
     padding-left: 15px;
 }
